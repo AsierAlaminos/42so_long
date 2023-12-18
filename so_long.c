@@ -73,26 +73,18 @@ int main(void)
 {
 	t_vars	vars;
 	t_data	img;
-	void	*img_player;
+	void	*img_floor;
 	void	*img_duplicate;
-	int		img_width;
-	int		img_height;
 	int		i;
+	char	*mapa;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 500, 500, "hello world");
-	vars.squarex = 5;
-	vars.squarey = 5;
+	vars.squarex = 0;
+	vars.squarey = 0;
 	//create_square(vars, img);
-	mlx_hook(vars.win, 2, 1L<<0, movement_control, &vars);
-	i = 0;
-	while (i < 30)
-	{
-		img_player = mlx_xpm_file_to_image(vars.mlx, "textures/floor.xpm", &img_width, &img_height);
-		mlx_put_image_to_window(vars.mlx, vars.win, img_player, vars.squarex + img_width, vars.squarey);
-		vars.squarex += img_width;
-		++i;
-	}
+	mapa = "maps/map_one.ber";
+	read_map(mapa, &vars);
+	
 	mlx_loop(vars.mlx);
 	return (0);
 }
