@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:27:39 by aalamino          #+#    #+#             */
-/*   Updated: 2023/12/18 19:51:38 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:51:21 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@
 # include <fcntl.h>
 
 typedef struct	s_data{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	int	img_width;
+	int	img_height;
 }	t_data;
+
+typedef struct	t_img
+{
+	void	*img_player;
+	void	*img_floor;
+	void	*img_wall;
+}	t_img;
 
 typedef struct	t_vars
 {
@@ -31,13 +35,22 @@ typedef struct	t_vars
 	void	*win;
 	int		squarex;
 	int		squarey;
+	t_img	images;
+	t_data	img_size;
+	char	*map;
+	int		len_map;
+	int		layers_map;
+	char	*map_path;
 }	t_vars;
 
 int		movement_control(int keycode, t_vars *vars);
 int 	close_window(t_vars *vars);
 int		create_square(t_vars vars, t_data img);
-void	read_map(char *map_path, t_vars *vars);
-void	print_map(t_vars *vars, char *map);
-void	put_floor(t_vars *vars, int x, int y);
+void	read_map(t_vars *vars);
+void	print_map(t_vars *vars);
+void	put_floor(t_vars *vars, int len, int max, int layer);
+void	create_window(t_vars *vars, char *map);
+void	create_images(t_vars *vars);
+void	move_player(t_vars *vars, int direction);
 
 #endif
