@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:27:39 by aalamino          #+#    #+#             */
-/*   Updated: 2023/12/20 19:51:21 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/12/28 18:19:53 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	t_img
 	void	*img_player;
 	void	*img_floor;
 	void	*img_wall;
+	void	*img_gold;
 }	t_img;
 
 typedef struct	t_vars
@@ -41,6 +42,7 @@ typedef struct	t_vars
 	int		len_map;
 	int		layers_map;
 	char	*map_path;
+	int		player_collect;
 }	t_vars;
 
 int		movement_control(int keycode, t_vars *vars);
