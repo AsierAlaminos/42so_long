@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 19:25:21 by aalamino          #+#    #+#             */
-/*   Updated: 2023/12/28 18:27:23 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:59:08 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int close_window(t_vars *vars)
 {
-	printf("\n[*] GAME OVER\n");
+	ft_printf("\n[*] GAME OVER\n");
 	exit(EXIT_SUCCESS);
 	return (0);
 }
@@ -43,6 +43,7 @@ int main(void)
 	vars.mlx = mlx_init();
 	vars.squarex = 0;
 	vars.squarey = 0;
+	vars.player_moves = 0;
 	vars.map_path = "maps/map_one.ber";
 	read_map(&vars);
 	mlx_loop(vars.mlx);

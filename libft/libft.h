@@ -6,13 +6,14 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:26:54 by aalamino          #+#    #+#             */
-/*   Updated: 2023/12/18 19:11:04 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:53:13 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
+# include <stdarg.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -72,5 +73,17 @@ char	*reader(char *str, int fd);
 char	*get_all_line(char *str);
 char	*reduce_str(char *str);
 char	*free_pointer(char *pointer);
+
+int	ft_printf(char const *str, ...);
+int	ft_flags(char f, va_list args);
+int	ft_long_flags(char f, va_list args);
+int	putnbr(int num);
+int	putnbrulong(unsigned int num);
+int	print_hex(char *num, int size_num);
+int	putnbrhex(unsigned int num, char c);
+int	putnbrlonghex(void *num, char *hex_chars);
+int	ft_putchar(int c);
+int	ft_print_str(char *str);
+int	nhexlen(unsigned long long num);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:27:39 by aalamino          #+#    #+#             */
-/*   Updated: 2023/12/28 18:19:53 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:24:06 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct	t_vars
 	int		layers_map;
 	char	*map_path;
 	int		player_collect;
+	int		player_moves;
 }	t_vars;
 
 int		movement_control(int keycode, t_vars *vars);
@@ -54,5 +55,10 @@ void	put_floor(t_vars *vars, int len, int max, int layer);
 void	create_window(t_vars *vars, char *map);
 void	create_images(t_vars *vars);
 void	move_player(t_vars *vars, int direction);
+void	count_map(t_vars *vars);
+int		map_comprobation(t_vars *vars);
+int		wall_comprobation(t_vars *vars);
+int		especial_comprobation(t_vars *vars);
+int	form_comprobation(t_vars *vars);
 
 #endif

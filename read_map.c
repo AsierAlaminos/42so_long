@@ -28,7 +28,9 @@ void	read_map(t_vars *vars)
 	}
 	vars->map = readed;
 	create_images(vars);
-	create_window(vars, vars->map);
+	count_map(vars);
+	map_comprobation(vars);
+	vars->win = mlx_new_window(vars->mlx, vars->img_size.img_width * vars->len_map, vars->img_size.img_height * vars->layers_map, "so_long");
 	print_map(vars);
 	mlx_key_hook(vars->win, movement_control, vars);
 }
@@ -54,7 +56,6 @@ void	print_map(t_vars *vars)
 		}
 		j++;
 	}
-	printf("i: %d / j: %d / count_nl: %d\n", i, j, count_nl);
 }
 
 void	put_floor(t_vars *vars, int len, int max, int layer)
@@ -65,11 +66,9 @@ void	put_floor(t_vars *vars, int len, int max, int layer)
 	void	*img_wall;
 	int		i;
 
-	printf("len: %d / max: %d\n", len, max);
 	i = 0;
 	while (i < max - len)
 	{
-		printf("%c", vars->map[i + len]);
 		if (vars->map[i + len] == '0')
 			mlx_put_image_to_window(vars->mlx, vars->win, vars->images.img_floor, vars->squarex + vars->img_size.img_width * i, vars->squarey + vars->img_size.img_height * layer);
 		if (vars->map[i + len] == '1')
@@ -82,7 +81,7 @@ void	put_floor(t_vars *vars, int len, int max, int layer)
 	}
 }
 
-void	create_window(t_vars *vars, char *map)
+void	count_map(t_vars *vars)
 {
 	int	i;
 	int	j;
@@ -91,17 +90,15 @@ void	create_window(t_vars *vars, char *map)
 	i = 0;
 	j = 0;
 	count_nl = 0;
-	while (map[i] != '\n')
+	while (vars->map[i] != '\n')
 		++i;
-	while (map[j] != '\0')
+	while (vars->map[j] != '\0')
 	{
-		if (map[j] == '\n')
+		if (vars->map[j] == '\n')
 			++count_nl;
 		++j;
 	}
 	++count_nl;
-	printf("count_nl: %d\n", count_nl);
-	vars->win = mlx_new_window(vars->mlx, vars->img_size.img_width * i, vars->img_size.img_height * count_nl, "so_long");
 	vars->len_map = i;
 	vars->layers_map = count_nl;
 }
