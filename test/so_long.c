@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 19:25:21 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/09 19:11:24 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:53:57 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 //comando
 //gcc -framework OpenGL -framework AppKit so_long.c read_map.c map_control.c keys_control.c libft/libft.a minilibx/libmlx.a
 
-int	close_window(void)
+int close_window()
 {
 	exit(EXIT_SUCCESS);
 	return (0);
@@ -27,21 +27,17 @@ void	create_images(t_vars *vars)
 	int		img_width;
 	int		img_height;
 
-	images.img_floor = mlx_xpm_file_to_image(vars->mlx,
-			"textures/floor.xpm", &img_width, &img_height);
-	images.img_wall = mlx_xpm_file_to_image(vars->mlx,
-			"textures/wall.xpm", &img_width, &img_height);
-	images.img_gold = mlx_xpm_file_to_image(vars->mlx,
-			"textures/gold.xpm", &img_width, &img_height);
-	images.img_player = mlx_xpm_file_to_image(vars->mlx,
-			"textures/player.xpm", &img_width, &img_height);
+	images.img_floor = mlx_xpm_file_to_image(vars->mlx, "textures/floor.xpm", &img_width, &img_height);
+	images.img_wall = mlx_xpm_file_to_image(vars->mlx, "textures/wall.xpm", &img_width, &img_height);
+	images.img_gold = mlx_xpm_file_to_image(vars->mlx, "textures/gold.xpm", &img_width, &img_height);
+	images.img_player = mlx_xpm_file_to_image(vars->mlx, "textures/player.xpm", &img_width, &img_height);
 	vars->images = images;
 	img_size.img_width = img_width;
 	img_size.img_height = img_height;
 	vars->img_size = img_size;
 }
 
-int	main(void)
+int main(void)
 {
 	t_vars	vars;
 

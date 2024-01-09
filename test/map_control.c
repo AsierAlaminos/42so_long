@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:03:21 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/09 19:34:13 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:50:36 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	map_comprobation(t_vars *vars)
 	valor *= wall_comprobation(vars);
 	valor *= especial_comprobation(vars);
 	valor *= form_comprobation(vars);
-	valor *= path_control(vars);
 	printf("valor: %d\n", valor);
 	return (valor);
 }
@@ -48,6 +47,7 @@ int	wall_comprobation(t_vars *vars)
 	i = len;
 	while (vars->map[i] != '\0')
 	{
+		printf("%c", vars->map[i]);
 		if (vars->map[i++] != '1')
 			return (-1);
 	}
@@ -63,7 +63,7 @@ int	especial_comprobation(t_vars *vars)
 	i = 0;
 	p = 0;
 	e = 0;
-	vars->collectible = 0;
+	vars->collectible= 0;
 	while (vars->map[i] != '\0')
 	{
 		if (vars->map[i] == 'P')
@@ -101,11 +101,8 @@ int	form_comprobation(t_vars *vars)
 	return (1);
 }
 
-int	path_control(t_vars *vars)
+/*int	path_control(t_vars vars)
 {
-	int	i;
-
-	i = vars->len_map + 1;
-	//while ()
+	
 	return (1);
-}
+}*/
