@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:25:45 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/09 19:33:18 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:18:41 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void	put_images(t_vars *vars, int len, int max, int layer)
 				vars->images.img_wall,
 				vars->squarex + vars->img_size.img_width * i,
 				vars->squarey + vars->img_size.img_height * layer);
-		if (vars->map[i + len] == 'P' || vars->map[i + len] == 'C')
+		if (vars->map[i + len] == 'P' || vars->map[i + len] == 'C'
+			|| vars->map[i + len] == 'E')
 			put_player_col(vars, vars->map[i + len], layer, i);
 		++i;
 	}
@@ -94,6 +95,11 @@ void	put_player_col(t_vars *vars, char pos, int layer, int i)
 	if (pos == 'C')
 		mlx_put_image_to_window(vars->mlx, vars->win,
 			vars->images.img_gold,
+			vars->squarex + vars->img_size.img_width * i,
+			vars->squarey + vars->img_size.img_height * layer);
+	if (pos == 'E')
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->images.img_exit,
 			vars->squarex + vars->img_size.img_width * i,
 			vars->squarey + vars->img_size.img_height * layer);
 }
@@ -115,6 +121,6 @@ void	count_map(t_vars *vars)
 		++i;
 	}
 	while (vars->map[vars->player_pos] != 'P')
-		vars->player_moves++;
+		vars->player_pos++;
 	vars->layers_map++;
 }

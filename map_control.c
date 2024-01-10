@@ -6,13 +6,13 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:03:21 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/09 19:34:13 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:12:51 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	map_comprobation(t_vars *vars)
+void	map_comprobation(t_vars *vars)
 {
 	int	valor;
 
@@ -20,9 +20,9 @@ int	map_comprobation(t_vars *vars)
 	valor *= wall_comprobation(vars);
 	valor *= especial_comprobation(vars);
 	valor *= form_comprobation(vars);
-	valor *= path_control(vars);
-	printf("valor: %d\n", valor);
-	return (valor);
+	//valor *= path_control(vars);
+	if (valor == -1)
+		close_window("Error");
 }
 
 int	wall_comprobation(t_vars *vars)
@@ -98,14 +98,5 @@ int	form_comprobation(t_vars *vars)
 		len++;
 		j += len;
 	}
-	return (1);
-}
-
-int	path_control(t_vars *vars)
-{
-	int	i;
-
-	i = vars->len_map + 1;
-	//while ()
 	return (1);
 }

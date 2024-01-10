@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:27:39 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/09 19:31:44 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:19:21 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct t_img
 	void	*img_floor;
 	void	*img_wall;
 	void	*img_gold;
+	void	*img_exit;
 }	t_img;
 
 typedef struct t_vars
@@ -49,7 +50,7 @@ typedef struct t_vars
 }	t_vars;
 
 int		movement_control(int keycode, t_vars *vars);
-int		close_window(void);
+int		close_window(char *mensaje);
 int		create_square(t_vars vars, t_data img);
 void	read_map(t_vars *vars);
 void	print_map(t_vars *vars);
@@ -58,12 +59,12 @@ void	create_window(t_vars *vars, char *map);
 void	create_images(t_vars *vars);
 void	move_player(t_vars *vars, int direction);
 void	count_map(t_vars *vars);
-int		map_comprobation(t_vars *vars);
+void	map_comprobation(t_vars *vars);
 int		wall_comprobation(t_vars *vars);
 int		especial_comprobation(t_vars *vars);
 int		form_comprobation(t_vars *vars);
 void	env_control(t_vars *vars, int direction, int i);
-int		path_control(t_vars *vars);
+int		path_control(t_vars *vars, int pos, int last_pos);
 void	put_player_col(t_vars *vars, char pos, int layer, int i);
 
 #endif
