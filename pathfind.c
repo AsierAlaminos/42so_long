@@ -16,7 +16,7 @@ int	path_control(t_vars *vars)
 {
 	char	*save_pos;
 
-	save_pos = ft_strdup("");
+	save_pos = malloc(sizeof(char));
 	if (node_comprobation(vars, vars->player_pos, 0, save_pos) == 'E')
 		return (1);
 	return (-1);
@@ -29,7 +29,7 @@ char	node_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos)
 
 	//debug_map(vars, pos);
 	splited_save = ft_split(save_pos, ':');
-	ft_printf("splited: %s\n", splited_save[0]);
+	//ft_printf("splited: %s\n", splited_save[0]);
 	if (splited_save[0] != NULL && ft_atoi(splited_save[0]) == vars->player_moves)
 		return (vars->map[pos]);
 	new_pos = save_comprobation(vars, pos, last_pos, save_pos);
@@ -109,8 +109,10 @@ int	save_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos)
 		if (ft_atoi(splited[i++]) == last_pos)
 			rep++;
 	}
+	ft_printf("join: %s\n", ft_strjoin(ft_substr(save_pos, 0, ft_strlen(save_pos)), ft_strjoin(ft_itoa(pos), ":")));
 	if (count >= 2 && rep == 0)
 		save_pos = ft_strjoin(save_pos, ft_strjoin(ft_itoa(pos), ":"));
+	//ft_printf("%s\n", save_pos);
 	return (0);
 }
 
@@ -122,8 +124,9 @@ void	debug_map(t_vars *vars, int pos)
 	while (vars->map[i] != '\0')
 	{
 		if (i == pos)
-			ft_printf("'");
-		ft_printf("%c", vars->map[i]);
+			ft_printf("'%c'", vars->map[i]);
+		else
+			ft_printf("%c", vars->map[i]);
 		i++;
 	}
 	ft_printf("\n");

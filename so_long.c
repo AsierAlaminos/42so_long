@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 19:25:21 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/11 18:05:42 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:17:29 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 
 int	close_window(char *mensaje)
 {
-	printf("%s\n", mensaje);
+	if (mensaje == NULL)
+		printf("[*] GAME OVER\n");
+	else
+		printf("%s\n", mensaje);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
