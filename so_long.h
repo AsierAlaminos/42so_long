@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:27:39 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/10 18:19:21 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:40:46 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,11 @@ int		wall_comprobation(t_vars *vars);
 int		especial_comprobation(t_vars *vars);
 int		form_comprobation(t_vars *vars);
 void	env_control(t_vars *vars, int direction, int i);
-int		path_control(t_vars *vars, int pos, int last_pos);
+int		path_control(t_vars *vars);
 void	put_player_col(t_vars *vars, char pos, int layer, int i);
+char	node_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos);
+char	dead_end(t_vars *vars, int pos, char *save_pos);
+int		save_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos);
+void	debug_map(t_vars *vars, int pos);
 
 #endif
