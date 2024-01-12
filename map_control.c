@@ -21,7 +21,7 @@ void	map_comprobation(t_vars *vars)
 	valor *= especial_comprobation(vars);
 	valor *= form_comprobation(vars);
 	//valor *= path_control(vars);
-	ft_printf("valor: %d\n", path_control(vars));
+	//ft_printf("valor: %d\n", path_control(vars));
 	if (valor == -1)
 		close_window("Error");
 }
