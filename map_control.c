@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:03:21 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/11 19:20:40 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:36:46 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	map_comprobation(t_vars *vars)
 	valor *= especial_comprobation(vars);
 	valor *= form_comprobation(vars);
 	//valor *= path_control(vars);
-	ft_printf("valor: %d\n", path_control(vars));
+	//ft_printf("valor: %d\n", path_control(vars));
 	if (valor == -1)
 		close_window("Error");
 }

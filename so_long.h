@@ -68,7 +68,7 @@ int		path_control(t_vars *vars);
 void	put_player_col(t_vars *vars, char pos, int layer, int i);
 char	node_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos);
 char	dead_end(t_vars *vars, int pos, char *save_pos);
-int		save_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos);
+char	*save_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos);
 void	debug_map(t_vars *vars, int pos);
 
 #endif
