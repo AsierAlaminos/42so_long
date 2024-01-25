@@ -6,13 +6,13 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 19:25:21 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/23 19:40:21 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:57:41 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 //comando
-//gcc -framework OpenGL -framework AppKit so_long.c read_map.c map_control.c keys_control.c libft/libft.a minilibx/libmlx.a
+//gcc/compil -framework OpenGL -framework AppKit so_long.c read_map.c map_control.c keys_control.c libft/libft.a minilibx/libmlx.a
 
 int	close_window(char *mensaje)
 {
@@ -47,15 +47,17 @@ void	create_images(t_vars *vars)
 	vars->img_size = img_size;
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
+	if (argc != 2)
+		close_window("Error\nArgumentos invalidos");
 	vars.mlx = mlx_init();
 	vars.squarex = 0;
 	vars.squarey = 0;
 	vars.player_moves = 0;
-	vars.map_path = "maps/map_three.ber";
+	vars.map_path = argv[1];
 	read_map(&vars);
 	mlx_loop(vars.mlx);
 	return (0);

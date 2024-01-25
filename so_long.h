@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:27:39 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/11 18:40:46 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:57:44 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,15 @@ typedef struct t_vars
 	t_img	images;
 	t_data	img_size;
 	char	*map;
+	char	*map_copy;
 	int		len_map;
 	int		layers_map;
 	char	*map_path;
 	int		collectible;
+	int		collec_copy;
 	int		player_moves;
 	int		player_pos;
+	int		path;
 }	t_vars;
 
 int		movement_control(int keycode, t_vars *vars);
@@ -70,5 +73,6 @@ char	node_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos);
 char	dead_end(t_vars *vars, int pos, char *save_pos);
 char	*save_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos);
 void	debug_map(t_vars *vars, int pos);
+int		char_comprobation(t_vars *vars);
 
 #endif

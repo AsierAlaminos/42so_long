@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:03:21 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/16 14:36:46 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:02:13 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,21 @@
 void	map_comprobation(t_vars *vars)
 {
 	int	valor;
+	int	pos;
 
 	valor = 1;
+	vars->path = 1;
+	replace_player(vars);
+	pos = vars->player_pos;
+	vars->collec_copy = 0;
 	valor *= wall_comprobation(vars);
 	valor *= especial_comprobation(vars);
 	valor *= form_comprobation(vars);
+	valor *= char_comprobation(vars);
 	//valor *= path_control(vars);
 	//ft_printf("valor: %d\n", path_control(vars));
 	if (valor == -1)
-		close_window("Error");
+		close_window("Error\nMapa no valido");
 }
 
 int	wall_comprobation(t_vars *vars)
@@ -98,6 +104,23 @@ int	form_comprobation(t_vars *vars)
 		++i;
 		len++;
 		j += len;
+	}
+	return (1);
+}
+
+int	char_comprobation(t_vars *vars)
+{
+	int		i;
+	char	position;
+
+	i = 0;
+	position = vars->map[i];
+	while (position != '\0')
+	{
+		if (position != '0' || position != '1' || position != 'C'
+			|| position != 'P')
+			return (-1);
+		position = vars->map[i];
 	}
 	return (1);
 }

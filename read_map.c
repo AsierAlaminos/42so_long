@@ -27,6 +27,7 @@ void	read_map(t_vars *vars)
 		line = get_next_line(fd);
 	}
 	vars->map = readed;
+	vars->map_copy = readed;
 	create_images(vars);
 	count_map(vars);
 	map_comprobation(vars);
