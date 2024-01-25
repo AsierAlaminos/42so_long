@@ -17,9 +17,9 @@
 int	close_window(char *mensaje)
 {
 	if (mensaje == NULL)
-		printf("[*] GAME OVER\n");
+		ft_printf("[*] GAME OVER\n");
 	else
-		printf("%s\n", mensaje);
+		ft_printf("%s\n", mensaje);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

@@ -6,32 +6,29 @@
 #    By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 11:18:12 by aalamino          #+#    #+#              #
-#    Updated: 2024/01/12 11:18:13 by aalamino         ###   ########.fr        #
+#    Updated: 2024/01/25 19:16:16 by aalamino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = so_long.a
-CFLAG   = -framework OpenGL -framework AppKit -Wall -Werror -Wextra
-FILES	= so_long.c keys_control.c map_control.c pathfind.c read_map.c
+NAME    = so_long
+CFLAG   = -Lmlx -lmlx -framework OpenGL -framework AppKit -Wall -Werror -Wextra
+FILES	= so_long.c keys_control.c map_control.c pathfind.c read_map.c ft_printf.c printf_string_utils.c calc_hex.c get_next_line.c get_next_line_utils.c
 
-OBJ    = $(FILES:.c=.o)
-B_OBJS  = $(FILES_BO:.c=.o)
+OBJS    = $(FILES:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-        ar rc $(NAME) $(OBJS)
+		ar rc $(NAME) $(OBJS)
 
 $(OBJS): $(FILES)
-        gcc $(CFLAG) -c $(FILES)
+		cc $(CFLAG) -c $(FILES)
 
-bonus: $(OBJS) $(B_OBJS)
-        ar rc $(NAME) $(OBJS) $(B_OBJS)
 clean:
-        @rm -f $(OBJS) $(B_OBJS)
+		@rm -f $(OBJS)
 
 fclean: clean
-        @rm -f $(NAME)
+		@rm -f $(NAME)
 
 re: fclean all
 

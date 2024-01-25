@@ -50,14 +50,15 @@ typedef struct t_vars
 	int		player_moves;
 	int		player_pos;
 	int		path;
+	int		exit;
 }	t_vars;
 
 int		movement_control(int keycode, t_vars *vars);
 int		close_window(char *mensaje);
 int		create_square(t_vars vars, t_data img);
 void	read_map(t_vars *vars);
-void	print_map(t_vars *vars);
 void	put_images(t_vars *vars, int len, int max, int layer);
+void	print_map(t_vars *vars);
 void	create_window(t_vars *vars, char *map);
 void	create_images(t_vars *vars);
 void	move_player(t_vars *vars, int direction);
@@ -69,10 +70,32 @@ int		form_comprobation(t_vars *vars);
 void	env_control(t_vars *vars, int direction, int i);
 int		path_control(t_vars *vars);
 void	put_player_col(t_vars *vars, char pos, int layer, int i);
-char	node_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos);
-char	dead_end(t_vars *vars, int pos, char *save_pos);
-char	*save_comprobation(t_vars *vars, int pos, int last_pos, char *save_pos);
-void	debug_map(t_vars *vars, int pos);
+void	map_comprobation(t_vars *vars);
 int		char_comprobation(t_vars *vars);
+void	flood_fill(t_vars *vars, int pos);
+void	replace_player(t_vars *vars);
+void	copy_map(t_vars *vars);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+char	*get_next_line(int fd);
+char	*reader(char *str, int fd);
+char	*get_all_line(char *str);
+char	*reduce_str(char *str);
+char	*free_pointer(char *pointer);
+
+int		ft_printf(char const *str, ...);
+int		ft_flags(char f, va_list args);
+int		ft_long_flags(char f, va_list args);
+int		putnbr(int num);
+int		putnbrulong(unsigned int num);
+int		print_hex(char *num, int size_num);
+int		putnbrhex(unsigned int num, char c);
+int		putnbrlonghex(void *num, char *hex_chars);
+int		ft_putchar(int c);
+int		ft_print_str(char *str);
+int		nhexlen(unsigned long long num);
 
 #endif
