@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 18:58:48 by aalamino          #+#    #+#             */
-/*   Updated: 2023/12/18 19:11:53 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:58:55 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,37 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include "libft.h"
+#include "so_long.h"
 
-char	*free_pointer(char *pointer)
+char	*liberar(char *pointer)
 {
 	free(pointer);
 	return (NULL);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*a;
+
+	i = 0;
+	a = s;
+	while (i < n)
+	{
+		a[i] = '\0';
+		++i;
+	}
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*pointer;
+
+	pointer = malloc(count * size);
+	if (!pointer)
+		return (NULL);
+	ft_bzero(pointer, count * size);
+	return (pointer);
 }
 
 char	*reader(char *str, int fd)
@@ -35,13 +60,13 @@ char	*reader(char *str, int fd)
 		if (read_b == -1)
 		{
 			free(lecture);
-			return (free_pointer(str));
+			return (liberar(str));
 		}
 		lecture[read_b] = '\0';
 		if (!lecture)
 		{
 			free(lecture);
-			return (free_pointer(str));
+			return (liberar(str));
 		}
 		str = ft_strjoin(str, lecture);
 		free(lecture);
@@ -65,8 +90,8 @@ char	*get_next_line(int fd)
 		read_str = reader(read_str, fd);
 		if (!read_str)
 		{
-			read_str = free_pointer(read_str);
-			str = free_pointer(str);
+			read_str = liberar(read_str);
+			str = liberar(str);
 			return (NULL);
 		}
 		str = ft_strjoin(str, read_str);

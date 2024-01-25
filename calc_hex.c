@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>

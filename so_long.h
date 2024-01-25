@@ -12,10 +12,9 @@
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "minilibx/mlx.h"
+# include "mlx/mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
-# include "libft/libft.h"
 # include <fcntl.h>
 
 typedef struct s_data{
@@ -85,6 +84,12 @@ char	*reader(char *str, int fd);
 char	*get_all_line(char *str);
 char	*reduce_str(char *str);
 char	*free_pointer(char *pointer);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*liberar(char *pointer);
 
 int		ft_printf(char const *str, ...);
 int		ft_flags(char f, va_list args);
