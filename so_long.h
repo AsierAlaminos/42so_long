@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:27:39 by aalamino          #+#    #+#             */
-/*   Updated: 2024/01/24 18:57:44 by aalamino         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:37:07 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-typedef struct s_data{
+typedef struct s_data
+{
 	int	img_width;
 	int	img_height;
 }	t_data;

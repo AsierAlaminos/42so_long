@@ -30,11 +30,9 @@ $(NAME): $(OBJS) $(LIBFT)
 
 clean:
 	rm -f $(OBJS)
-	make -C mlx clean
 
 fclean: clean
 	rm -f $(NAME)
-	make -C mlx clean
 
 re: fclean all
 

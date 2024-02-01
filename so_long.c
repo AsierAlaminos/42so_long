@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-//comando
-//gcc/compil -framework OpenGL -framework AppKit so_long.c read_map.c map_control.c keys_control.c libft/libft.a minilibx/libmlx.a
 
 int	close_window(char *mensaje)
 {

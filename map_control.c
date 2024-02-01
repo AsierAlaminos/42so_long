@@ -21,9 +21,9 @@ void	map_comprobation(t_vars *vars)
 	vars->exit = -1;
 	vars->map_copy[vars->player_pos] = 'X';
 	vars->collec_copy = 0;
-	valor *= wall_comprobation(vars);
-	valor *= especial_comprobation(vars);
-	valor *= form_comprobation(vars);
+	if (wall_comprobation(vars) == -1 || especial_comprobation(vars) == -1
+		|| form_comprobation(vars) == -1 || char_comprobation(vars) == -1)
+		close_window("Error\nMapa no valido");
 	valor *= char_comprobation(vars);
 	flood_fill(vars, vars->player_pos);
 	if (vars->exit == -1)

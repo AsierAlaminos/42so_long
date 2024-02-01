@@ -16,7 +16,7 @@ void	flood_fill(t_vars *vars, int pos)
 {
 	if (pos != vars->player_pos
 		&& (vars->map_copy[pos] == '1' || vars->map_copy[pos] == 'X'
-		|| vars->exit == 1))
+			|| vars->exit == 1))
 		return ;
 	if (vars->map_copy[pos] == 'C')
 		vars->collec_copy++;
@@ -28,8 +28,8 @@ void	flood_fill(t_vars *vars, int pos)
 	vars->map_copy[pos] = 'X';
 	flood_fill(vars, pos + 1);
 	flood_fill(vars, pos - 1);
-	flood_fill(vars,  pos + (vars->len_map + 1));
-	flood_fill(vars, pos - (vars->len_map  + 1));
+	flood_fill(vars, pos + (vars->len_map + 1));
+	flood_fill(vars, pos - (vars->len_map + 1));
 	return ;
 }
 
@@ -48,4 +48,3 @@ void	copy_map(t_vars *vars)
 		i++;
 	}
 }
-

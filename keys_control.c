@@ -60,7 +60,6 @@ void	env_control(t_vars *vars, int direction, int i)
 {
 	char	temp;
 
-	
 	if (vars->map[i + direction] == 'C')
 	{
 		vars->collectible--;
