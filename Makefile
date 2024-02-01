@@ -25,7 +25,7 @@ lib: $(LIBFT)
 $(NAME): $(OBJS) $(LIBFT)
 	cc $(CCFLAGS) $(MLX_FLAGS) $(FILES) -o $(NAME)
 
-%.o: %.c
+.o: .c
 	cc $(CCFLAGS) -c -o $@ $<
 
 clean:
